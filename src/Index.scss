@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700');
+body{
+  font-family: Montserrat, sans-serif !important;
+  background-color: #F3F7F9;
+  padding-top: 65px;
+}
+.center-content{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  -webkit-align-items: center;
+  align-items: center; /* align vertical */
+}
