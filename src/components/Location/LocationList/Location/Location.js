@@ -9,7 +9,7 @@ const Location = (props) => {
 			<p>{props.location.name}</p>
 			<hr/>
 			<p>
-				<Link to={`/locations/${props.location._id}`} className="badge badge-info"><i className="fa fa-edit"/> Edit</Link></p>
+				<Link to={`/edit-location/${props.location._id}`} className="badge badge-info"><i className="fa fa-edit"/> Edit</Link></p>
 		</div>
 	);
 };
