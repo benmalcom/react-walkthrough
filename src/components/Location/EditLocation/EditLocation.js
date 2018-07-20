@@ -51,7 +51,6 @@ class EditLocation extends Component {
 
     render() {
         const {error, loading, name} = this.state;
-        let jsx = null;
         if (!location) {
             return <Loader message="Getting location..."/>
         }
