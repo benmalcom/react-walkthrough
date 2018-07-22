@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Agent from '../../../utils/agent';
-import Location from './Todo/Location';
+import Todo from './Todo/Todo';
 import Loader from '../../utils/Loader/Loader';
 import AlertBox from '../../utils/AlertBox/AlertBox';
 import {Link} from 'react-router-dom';
@@ -9,14 +9,14 @@ class TodoList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            locations: null
+            todos: null
         };
     }
 
     async componentDidMount() {
         try {
-            const {data: locations} = await Agent.Location.getAll();
-            this.setState({locations});
+            const {data: todos} = await Agent.Todo.getAll();
+            this.setState({todos});
         } catch (e) {
             console.log('e ', e.message);
         }
@@ -24,28 +24,28 @@ class TodoList extends Component {
     }
 
     render() {
-        const {locations} = this.state;
+        const {todos} = this.state;
         let jsx = null;
-        if (!locations) {
-            jsx = <Loader message="Getting locations..."/>
+        if (!todos) {
+            jsx = <Loader message="Getting todos..."/>
         }
-        else if (!locations.length) {
-            jsx = <AlertBox message={'No locations available'} alertStyles={['alert-warning']}/>
+        else if (!todos.length) {
+            jsx = <AlertBox message={'No Todo added yet'} alertStyles={['alert-warning']}/>
         } else {
-            jsx = locations.map(location => <Location key={location._id} location={location}/>);
+            jsx = todos.map(todo => <Todo key={todo._id} todo={todo}/>);
         }
         return (
             <div>
                 <div className="row">
-                    <Link to="/add-location" className="btn btn-success btn-sm">Add location</Link>
+                    <Link to="/add-todos" className="btn btn-success btn-sm">Add Todo</Link>
                 </div>
+                <h1>To Lists</h1>
                 <div className="row">
                     {jsx}
                 </div>
             </div>
         );
     }
-
 }
 
 export default TodoList;
